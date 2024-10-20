@@ -1,3 +1,9 @@
+# IDE
 .idea
 .vscode
+
+#Temporary
 tmp
+
+#Config
+.env
