@@ -19,7 +19,6 @@ type BodyDto struct {
 func SetupRouter() (router *gin.Engine) {
 	dsn := internal.DatabaseConfig.DatabaseDsn
 	db, _ := gorm.Open(postgres.Open(dsn), &gorm.Config{})
-	db.AutoMigrate(&Greeting{})
 
 	router = gin.Default()
 
