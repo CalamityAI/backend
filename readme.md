@@ -54,20 +54,28 @@ go run cmd/http/main.go
 
 ### Database management
 
-Create migration
+Create and/or apply migrations
 
 ```bash
+atlas migrate diff --env gorm migration_name
 ```
 
-Apply migration
+Apply migrations
 
 ```bash
+atlas migrate --env=gorm apply
 ```
 
 ### Linting
 
-Lint
+Check linting errors
 ```bash
+golangci-lint run
+```
+
+Check linting errors and automatically fix
+```bash
+golangci-lint run --fix
 ```
 
 ### Testing

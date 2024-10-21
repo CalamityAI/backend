@@ -7,9 +7,23 @@ data "external_schema" "gorm" {
   ]
 }
 
+data "external" "config" {
+  program = [
+    "go",
+    "run",
+    "-mod=mod",
+    "./cmd/gorm-loader/config/main.go",
+  ]
+}
+
+locals{
+    config = jsondecode(data.external.config)
+}
+
 env "gorm" {
   src = data.external_schema.gorm.url
-  dev = getenv("DATABASE_DSN")
+  url = local.config.databaseUrl
+  dev = "docker://postgres/14"
   migration {
     dir = "file://migrations"
   }

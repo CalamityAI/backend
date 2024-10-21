@@ -9,7 +9,8 @@ import (
 
 type Greeting struct {
 	gorm.Model
-	Content string
+	Content  string
+	Content2 string
 }
 
 type BodyDto struct {
@@ -17,7 +18,7 @@ type BodyDto struct {
 }
 
 func SetupRouter() (router *gin.Engine) {
-	dsn := internal.DatabaseConfig.DatabaseDsn
+	dsn := internal.DatabaseConfig.DatabaseUrl
 	db, _ := gorm.Open(postgres.Open(dsn), &gorm.Config{})
 
 	router = gin.Default()
